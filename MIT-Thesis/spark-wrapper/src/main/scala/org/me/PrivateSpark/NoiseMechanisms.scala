@@ -1,17 +1,23 @@
 /** AsymLap */
-def asymlaplace(scale: Double, asym : Double): Double = {
+def asymlaplace(args : Double*): Double = {
+
+    val scale = args{0}
+    val asym = args{1}
+
     val u = 0.5 - scala.util.Random.nextDouble()
     val s=math.signum(u)
     -scale * math.log(math.abs(u)* s *math.pow(asym,s)) / s*math.pow(asym,s)     /** Second constraint to be implemented**/ /**Check for values **/us
   }
   
   /**Laplace**/
-  def laplace(scale: Double): Double = {
+  def laplace(args : Double*): Double = {
+    val scale = args{0}
+    
     val u = 0.5 - scala.util.Random.nextDouble()
     -math.signum(u) * scale * math.log(1 - 2*math.abs(u)) 
   }
-/** Staricase - 1 - Unoptimized - trial check **/
-def optimalNoise(epsilon:Double, sensitivity:Double,gamma:Double): Double =
+/** Staircase - 1 - Unoptimized - trial check **/
+def optimalNoise(epsilon:Double, sensitivity:Double, gamma:Double): Double =
 {
         var S= 0
         var B= 0
